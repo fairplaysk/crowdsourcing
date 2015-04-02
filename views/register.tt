@@ -1,0 +1,38 @@
+     [% IF show_warning %]
+      <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong> [% show_warning %] </strong>
+      </div>
+      [% END %]
+<!-- HEADER line -->
+<div class="container">
+   <div class="span6">
+      <form class="form-horizontal well" method="post" action="/register">
+        <fieldset>
+          <legend>Pridaj noveho brigadnika</legend>
+          <div class="control-group">
+            <label class="control-label" for="new_login">Login</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" id="new_login" name="login"/>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="new_pw1">Password</label>
+            <div class="controls">
+              <input type="password" class="input-xlarge" id="new_pw1" name="password"/>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="new_pw2">Verify password</label>
+            <div class="controls">
+              <input type="password" class="input-xlarge" id="new_pw2" name="password2"/>
+	      <button type="submit" class="btn btn-primary">Pridaj noveho brigadnika</button>
+	</div>
+	</div>
+        </fieldset>
+      </form>
+    </div>
+
+  </div>
+
+</div>

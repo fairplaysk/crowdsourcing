@@ -1,0 +1,14 @@
+#!/bin/bash
+#This is a prototype of Fairplay Aliance's Framework for PDF dataset tagging by means of multi-user collaborative karmically gama-omega-delta meta-positive activity.
+#Developped by wizzion.com / Daniel Devatman Hromada hromi at giver.eu ORCID 0000-0002-0125-0373 github.com/hromi
+
+#Written in PERL, needs Dancer WebApp framework to be installed on the machine of deployment
+$curl -L http://cpanmin.us | perl - --sudo Dancer2
+
+#Scales well even for hundreds (possibly more) parallely connected users, You can specify the number of connections by launching the app through plackup and Starman
+$cpanm Starman
+#to start the app in deployment scenario on port 3000 and 777 users, run
+$plackup -E deployment -s Starman --workers=777 -p 3000 -a bin/app.pl
+
+#Concretely implements only one use-case, that of Slovakia's Land Register Dataset (SLRD), database is highly specific nonetheless useful as illustratory example
+

@@ -1,0 +1,12 @@
+
+	<div class="span4">
+		<h2>
+			<i class="icon-user icon-large"></i> New Givers
+		</h2>
+		<ul class="unstyled">	
+		[% FOREACH item IN giverlist %]
+		      <li><a href="/giver/[% item.giver_id %]">[% item.login %]</a></li>
+  		[% END %]
+		</ul>
+	</div>
+

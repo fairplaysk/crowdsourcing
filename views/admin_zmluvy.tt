@@ -1,0 +1,17 @@
+<table>
+	<tr><th>AFP id</th><th>Type</th><th>File</th><th>PozfondID</th><th>Partner</th><th>Podpisane</th><th>Predavajuci</th><th>Cena</th><th>Brigadnik</th>
+[%FOREACH item in zmluvy %]
+	<tr>
+		<td>[%item.zmluva_id%]</td>
+		<td>[%item.type%]</td>
+		<td><a href="/zmluvy/[%item.type%]/[%item.rok%]/[%item.filename%].pdf">[%item.filename%]</a></td>
+		<td>[%item.pozfond_id%]</td>
+		<td>[%item.partner%]</td>
+		<td>[%item.podpis%]</td>
+		<td>[%item.podpisal%]</td>
+		<td>[%item.cena%]</td>
+		<td>[%item.login%]</td>
+		<td>[%item.completed%]</td>
+	</tr>
+[%END%]
+</table>

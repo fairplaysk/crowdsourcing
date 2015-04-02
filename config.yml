@@ -1,0 +1,54 @@
+# This is the main configuration file of your Dancer app
+# env-related settings should go to environments/$env.yml
+# all the settings in this file will be loaded at Dancer's startup.
+
+# Your application's name
+appname: "Fairplay::Pozfond"
+
+# The default layout to use for your application (located in
+# views/layouts/main.tt)
+#layout: "main"
+
+warnings: 0
+global_warnings: 0
+#import_warnings: false
+
+# when the charset is set to UTF-8 Dancer will handle for you
+# all the magic of encoding and decoding. You should not care
+# about unicode within your app when this setting is set (recommended).
+charset: "UTF-8"
+
+# template engine
+# simple: default and very basic template engine
+# template_toolkit: TT
+
+session: YAML
+session_dir: /tmp/pozfond-sessions
+
+template: xslate
+engines:
+ xslate:
+#  encoding: 'utf8'
+  syntax: 'TTerse'
+  header:
+   - 'layouts/main.tt'
+#  footer:
+#   - 'layouts/footer.tt'
+
+plugins:
+    Database:
+        #dsn: 'DBI:mysql:database=pozfond;mysql_socket=/var/run/mysqld/mysqld.sock'
+        driver: 'mysql'
+        database: 'DATABASE_DB_HERE'
+        username: 'DATABASE_USER_HERE'
+        password: 'DATABASE_PASSWORD__HERE'
+        mysql_socket: '/var/run/mysqld/mysqld.sock'
+        on_connect_do: 
+          - "SET NAMES 'utf8'"
+          - "SET CHARACTER SET 'utf8'" 
+# template: "template_toolkit"
+# engines:
+#   template_toolkit:
+#     start_tag: '[%'
+#     end_tag:   '%]'
+

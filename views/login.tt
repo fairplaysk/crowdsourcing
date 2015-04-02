@@ -1,0 +1,7 @@
+<center>
+		<form class="form-inline" method="post" action="/login">
+			<input name="login" type="text" class="input-small" placeholder="Login">			<input name="password" type="password" class="input-small" placeholder="Password">
+			<button type="submit" class="btn">Sign in</button>
+		</form>
+</center>
+

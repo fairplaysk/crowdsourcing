@@ -1,0 +1,99 @@
+<center>
+Help: Ak je pole zaciernene, uloz prosim informaciu o velkosti zacierneneho pola tagom ##SIZE kde SIZE je pocet zaciernenych znakov. Pokial je sirka pola tazko zmeratelna, poinformuj nas o zacierneni pola tokenom <b>##</b><br/>
+<br/>
+<table>
+[%FOREACH item in zmluvy %]
+<form  action="/work/updatezmluva" method="post">
+	<tr><td colspan=3>
+		<h1>Zmluva: <a href="/zmluvy/[%item.type%]/[%item.rok%]/[%item.filename%].pdf">[%item.filename%]</a></h1>
+	</td></tr>
+	<tr>
+	<input type="hidden" name="id" value="[%item.zmluva_id%]"/>
+		<td>Typ zmluvy: <b>[%item.type%]</b></td>
+		<td>Nespravny typ?  <input type="checkbox" name="incorrect_type" value="yes" [%IF item.incorrect_type=='yes'%]checked[%END%]/></td>
+		<td>PozFond ID<input type="text" name="pozfond_id" value="[%item.pozfond_id%]"/></td>
+	</tr>
+	<tr>
+[%IF item.type=='bezodplatne'%]
+		<td>S kupujucim/restituentom:<input type="text" placeholder="Meno1 Priezvisko1; Meno2 Priezvisko2, ..." name="partner" value="[%item.partner%]"/></td>
+		<td>ICO kupujuceho/restituenta:<input type="text" name="ICO" value="[%item.ICO%]" placeholder="ICO 1;ICO 2;ICO 3;..."/></td>
+	</tr>
+		<td>Podpisal dna <input type="text" name="podpis" value="[%item.podpis%]"/></td>
+		<td> predavajuci <input type="text" name="podpisal" placeholder="Meno1 Priezvisko; Meno2 Priezvisko2; ..." value="[%item.podpisal%]"/></td>
+	</tr>
+	<tr></tr>
+	<tr><td colspan=3><b><br/>Udaje o pozemkoch povodne vlastnenych restituentom</b></td></tr>
+	<tr>
+		<td>
+			KU <input type="text" name="kataster_ref" placeholder="Katastralne uzemie, Okres" value="[%item.kataster_ref%]"/>
+			LV <input type="text" name="LV" placeholder="List Vlastnictva" value="[%item.LV%]"/>
+		</td>
+		<td>o vymere<input type="text" name="vymera" placeholder="m2" value="[%item.vymera%]"/><input checked type="radio" name="metric" value="m2"/>m2<input type="radio" name="metric" value="ha"/>ha</td>
+		<td>typ pody<input type="text" name="typ_pody" placeholder="" value="[%item.typ_pody%]"/></td>
+<!--		<td> pocet parciel <input type="text" name="pocet_parciel" value="[%item.pocet_parciel%]"/></td>-->
+		<td>Intravilan	? <input type="checkbox" name="intravilan" value="yes" [%IF item.intravilan=='yes'%]checked[%END%]/></td>
+	</tr>
+	<tr>
+		<td>Znalec: <input type="text" name="znalec" value="[%item.znalec%]"/></td>
+		<td colspan=2></td>
+		<td> za celkovu cenu<input type="text" name="cena" value="[%item.cena%]"/></td>
+	</tr>
+
+	<tr><td colspan=3><b><br/>Udaje o pozemkoch ktore sluzia ako nahrada za povodne pozemky</b></td></tr>
+	<tr>
+		<td>
+			KU:<input type="text" name="kataster_ref_substitute" placeholder="Katastralne uzemie, Okres" value="[%item.kataster_ref_substitute%]"/>
+			LV <input type="text" name="LV_substitute" placeholder="List Vlastnictva" value="[%item.LV_substitute%]"/>
+		</td>
+		<td>o vymere<input type="text" name="vymera_substitute" placeholder="m2" value="[%item.vymera_substitute%]"/><input checked type="radio" name="metric_substitute" value="m2"/>m2<input type="radio" name="metric_substitute" value="ha"/>ha</td>
+		<td>typ pody<input type="text" name="typ_pody_substitute" placeholder="" value="[%item.typ_pody_substitute%]"/></td>
+<!--		<td> pocet parciel <input type="text" name="pocet_parciel_substitute" value="[%item.pocet_parciel_substitute%]"/></td>-->
+		<td>Intravilan	? <input type="checkbox" name="intravilan_substitute" value="yes" [%IF item.intravilan_substitute=='yes'%]checked[%END%]/></td>
+	</tr>
+	<tr>
+		<td>Znalec: <input type="text" name="znalec_substitute" value="[%item.znalec_substitute%]"/></td>
+		<td colspan=2></td>
+		<td> za celkovu cenu<input type="text" name="cena_substitute" value="[%item.cena_substitute%]"/></td>
+	</tr>
+
+	<tr><td colspan=3>Financne dorovnanie:<input type="text" name="dorovnanie" value="[%item.dorovnanie%]"/>(- ak dorovnanie platil SPF uvedte zaporne cislo)</td></tr> 
+
+[%ELSE%]
+		<td>S kupujucim/najomcom:<input type="text" placeholder="Meno1 Priezvisko1; Meno2 Priezvisko2, ..." name="partner" value="[%item.partner%]"/></td>
+		<td>ICO kupujuceho/najomcu:<input type="text" name="ICO" value="[%item.ICO%]" placeholder="ICO 1;ICO 2;ICO 3;..."/></td>
+		<td>Znalec: <input type="text" name="znalec" value="[%item.znalec%]"/></td>
+	</tr>
+		<td>Podpisal dna <input type="text" name="podpis" value="[%item.podpis%]"/></td>
+		<td> predavajuci <input type="text" name="podpisal" placeholder="Meno1 Priezvisko; Meno2 Priezvisko2; ..." value="[%item.podpisal%]"/></td>
+	</tr>
+	<tr>
+		<td>
+			ohladom pozemku v <input type="text" name="kataster_ref" placeholder="Katastralne uzemie, Okres" value="[%item.kataster_ref%]"/>
+			LV <input type="text" name="LV" placeholder="List Vlastnictva" value="[%item.LV%]"/>
+		</td>
+		<td>o vymere<input type="text" name="vymera" placeholder="m2" value="[%item.vymera%]"/><input checked type="radio" name="metric" value="m2"/>m2<input type="radio" name="metric" value="ha"/>ha</td>
+		<td>typ pody<input type="text" name="typ_pody" placeholder="" value="[%item.typ_pody%]"/></td>
+<!--		<td> pocet parciel <input type="text" name="pocet_parciel" value="[%item.pocet_parciel%]"/></td>-->
+		<td>Intravilan	? <input type="checkbox" name="intravilan" value="yes" [%IF item.intravilan=='yes'%]checked[%END%]/></td>
+	</tr>
+	<tr>
+		<td colspan=2></td>
+		<td> za celkovu cenu<input type="text" name="cena" value="[%item.cena%]"/></td>
+	</tr>
+[%END%]
+	<tr>
+		<td colspan=3>Tagy<input name="tags" class="input-block-level" value="[%item.tags%]" type="text" placeholder="Tagy (oddelit ich bodkociarkou). Mozu mat tiez formu MENO_TAGU=hodnota"></td>
+	</tr>
+	<tr>
+		<td colspan=3>Poznamka<textarea name="poznamka" class="input-block-level" placeholder="Sem napis vsetko co si zistil a nepatri to medzi tagy.">[%item.poznamka%]</textarea></td>
+	</tr><tr>
+		<td colspan=2></td>
+		<td>Hotovo? <input type="checkbox" name="complete" value="yes" [%IF item.complete=='yes'%]checked[%END%]/><br/></td>
+	</tr>
+	<tr>
+		<td colspan=2></td>
+		<td><button>Uloz zmeny</button><br/><br/></td>
+	</tr>
+</form>
+[%END%]
+</table></center>

@@ -1,0 +1,18 @@
+<form  method="post" action="/admin/stats">
+	Od:<input type="text" name="from" value="[%from%]" placeholder="2013-03-23"/>
+	Do:<input type="text" name="to" value="[%to%]" placeholder="2013-04-23"/>
+	<button>Vyfiltruj</button>
+</form>
+<table>
+<tr>
+	<th>Brigadnik</th><th>Hotove</th><th>Partnerz</th>
+</tr>
+[%FOREACH row in stats %]
+<tr>
+	<th>[%row.login%]</th>
+	<th>[%row.pocet%]</th>
+	<th>[%row.distpar%]</th>
+</tr>
+[%END%]
+</table>
+

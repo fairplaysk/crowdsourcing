@@ -1,0 +1,13 @@
+AFP id;Type;File;PozfondID;Partner;Podpisane;Predavajuci;Brigadnik;Completed;Tagy;<br/>
+$d.="'".FOREACH item in zmluvy }."'"
+		$d.="'".$z->{zmluva_id}."'";
+		$d.="'".$z->{type}."'";
+		$d="'http://pozfond.datanest.sk/zmluvy/'"; #$z->{type}/$z->{year}/$z->{filename}'";
+		$d.="'".$z->{pozfond_id}."'";
+		$d.="'".$z->{partner}."'";
+		$d.="'".$z->{podpis}."'";
+		$d.="'".$z->{podpisal}."'";
+		$d.="'".$z->{login}."'";
+		$d.="'".$z->{completed}."'";
+		$d.="'".$z->{tags}."'";
+$d.="'".END}."'"

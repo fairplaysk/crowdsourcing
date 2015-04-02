@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=[% settings.charset %]" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>[% settings.appname %] - BETA version</title>
+
+<link rel="stylesheet" href="[% request.uri_base %]/bootstrap/css/bootstrap.css" >
+<link rel="stylesheet" href="[% request.uri_base %]/fontawesome/css/font-awesome.css" >
+<link rel="stylesheet" href="[% request.uri_base %]/css/style.css" >
+
+</head>
+<body>
+
+<script src="[% request.uri_base %]/javascripts/jquery-1.7.2.min.js"></script>
+<script src="[% request.uri_base %]/bootstrap/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function()
+      {
+      });
+</script>
+<!-- Main content -->
+[% IF worker_id == 1%]
+            <div class="navbar navbar-inverse">
+              <div class="navbar-inner">
+                <div class="container">
+                  <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </a>
+
+                  <a class="brand" href="/">[%login%]</a>
+                  <div class="nav-collapse collapse navbar-responsive-collapse">
+                    <ul class="nav">
+                      <li><a href="/admin/stats">Statistiky</a></li>
+                      <li><a href="/admin/addworker">Pridaj brigadnika</a></li>
+                      <li><a href="/admin/zmluvy/">Zmluvy</a></li>
+                      <li><a href="/admin/exportcsv/">Export CSV</a></li>
+                      <li><a href="/admin/exportcsv_all/">Export CSV (ALL)</a></li>
+		</ul>
+		<ul class="nav pull-right">
+                  			<li><a href="/logout">Log out</a></li>
+                    </ul>
+                            </div><!-- /.nav-collapse -->
+                </div>
+              </div><!-- /navbar-inner -->
+            </div>
+[% ELSIF worker_id %]
+            <div class="navbar navbar-inverse">
+              <div class="navbar-inner">
+                <div class="container">
+                  <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </a>
+
+                  <a class="brand" href="/">[%login%]</a>
+                  <div class="nav-collapse collapse navbar-responsive-collapse">
+                    <ul class="nav">
+                      <li><a href="/work">Zmluvy</a></li>
+		</ul>
+		<ul class="nav pull-right">
+                  			<li><a href="/logout">Log out</a></li>
+                    </ul>
+                            </div><!-- /.nav-collapse -->
+                </div>
+              </div><!-- /navbar-inner -->
+            </div>
+[%END%]
+
+       [% IF show_message %]
+      <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="info">&times;</button>
+      <strong>Hey!</strong> [% show_message %]
+      </div>
+      [% END %]
+
+     [% IF show_warning %]
+      <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      [% show_warning %]
+      </div>
+      [% END %]
+
+
+
+ <!--    <div class="alert alert-error">PREBIEHA UDRZBA SYSTEMU, PROSIM NEPRACUJTE</DIV> -->
